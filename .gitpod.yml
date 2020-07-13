@@ -1,0 +1,6 @@
+tasks:
+  - init: go get -v -d -t ./.. && go build -o save2cloud .
+    command: ./save2cloud help
+vscode:
+  extensions:
+    - premparihar.gotestexplorer@0.1.11:DhzL8CT0KN1bzUVh3ZL3rQ==
