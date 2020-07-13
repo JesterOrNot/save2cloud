@@ -1,8 +1,11 @@
 image:
   file: .gitpod.Dockerfile
 tasks:
-  - init: go get -v -d -t . && go build -o save2cloud .
+  - name: Run
+    init: go get -v -d -t . && go build -o save2cloud . && gp sync-done
     command: ./save2cloud help
+  - name: Test
+    init: gp sync-await && go get -v -d -t . && go test -v .
 vscode:
   extensions:
     - premparihar.gotestexplorer@0.1.11:DhzL8CT0KN1bzUVh3ZL3rQ==
