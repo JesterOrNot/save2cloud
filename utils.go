@@ -14,8 +14,8 @@ func PrintWarning(warning string) {
 	fmt.Println("\033[1;33mWarning:\033[m", warning)
 }
 
-func PrintInfo(info string) {
-	fmt.Printf("\033[1;32m%s\033[m\n", info)
+func PrintUploading(path string) {
+	fmt.Println("\033[1;32mUploading:\033[m", path)
 }
 
 func Contains(s []string, e string) bool {

@@ -41,7 +41,7 @@ func uploadFile(ctx context.Context, bkt *storage.BucketHandle, path, content st
 	obj := bkt.Object(path)
 	writer := obj.NewWriter(ctx)
 	fmt.Fprintf(writer, content)
-	PrintInfo(fmt.Sprint("Uploading: ", path))
+	PrintUploading(path)
 	writer.Close()
 	wg.Done()
 }
