@@ -38,10 +38,10 @@ func GcpEntrypoint(c *cli.Context) {
 }
 
 func uploadFile(ctx context.Context, bkt *storage.BucketHandle, path, content string, wg *sync.WaitGroup) {
-	PrintInfo(fmt.Sprint("Uploading: ", path))
 	obj := bkt.Object(path)
 	writer := obj.NewWriter(ctx)
-	defer writer.Close()
-	defer wg.Done()
 	fmt.Fprintf(writer, content)
+	PrintInfo(fmt.Sprint("Uploading: ", path))
+	writer.Close()
+	wg.Done()
 }
