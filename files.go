@@ -5,8 +5,9 @@ import (
 )
 
 // GetFilesInDir gets the contents of all files in a directory
-func GetFilesInDir(path string) []string {
+func GetFilesInDir(path string) ([]string, []string) {
 	var contents []string
+	var paths []string
 	files, err := ioutil.ReadDir(path)
 	if err != nil {
 		PrintError("Path does not exist.", 127)
@@ -17,6 +18,7 @@ func GetFilesInDir(path string) []string {
 			PrintError("Could not read file.", 1)
 		}
 		contents = append(contents, string(fileContents))
+		paths = append(paths, file.Name())
 	}
-	return contents
+	return contents, paths
 }
