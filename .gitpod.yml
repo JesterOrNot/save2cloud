@@ -1,5 +1,7 @@
+image:
+  file: .gitpod.Dockerfile
 tasks:
-  - init: go get -v -d -t ./.. && go build -o save2cloud .
+  - init: go get -v -d -t . && go build -o save2cloud .
     command: ./save2cloud help
 vscode:
   extensions:
