@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io/ioutil"
 )
 
@@ -20,6 +21,13 @@ func GetFilesInDir(path string) ([]string, []string) {
 			}
 			contents = append(contents, string(fileContents))
 			paths = append(paths, file.Name())
+		} else {
+			dirContents, dirPaths := GetFilesInDir(path + "/" + file.Name())
+			for i, dirPath := range dirPaths {
+				dirPaths[i] = file.Name() + "/" + dirPath
+			}
+			contents = append(append(contents, ""), dirContents...)
+			paths = append(append(paths, fmt.Sprintf("%s/", file.Name())), dirPaths...)
 		}
 	}
 	return contents, paths

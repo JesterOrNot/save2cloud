@@ -25,7 +25,7 @@ func TestGetFilesInDir(t *testing.T) {
 	go CreateFileWithContent("./test/b.txt", "Hello World From b.txt", &wg)
 	go CreateFileWithContent("./test/c.txt", "Hello World From c.txt", &wg)
 	wg.Wait()
-	contents := GetFilesInDir("test")
+	contents, _ := GetFilesInDir("test")
 	if !Contains(contents, "Hello World From a.txt") {
 		PrintError("Failed", 1)
 	} else if !Contains(contents, "Hello World From b.txt") {

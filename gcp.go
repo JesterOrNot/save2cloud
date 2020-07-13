@@ -21,7 +21,7 @@ func GcpEntrypoint(c *cli.Context) {
 	defer client.Close()
 	bkt := client.Bucket(bucketName)
 	if err := bkt.Create(ctx, projectID, nil); err != nil {
-		PrintError(err.Error(), 1)
+		PrintWarning(err.Error())
 	}
 
 	if path == "" {
